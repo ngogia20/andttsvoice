@@ -54,8 +54,24 @@ public class MainActivity extends Activity implements OnClickListener,TextToSpee
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==REQUEST_OK  && resultCode==RESULT_OK) {
             ArrayList<String> thingsYouSaid = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            ((TextView)findViewById(R.id.text1)).setText(thingsYouSaid.get(0));
-            speech(thingsYouSaid.get(0));
+
+            String tts = thingsYouSaid.get(0);
+            String finaltts = tts;
+            if(tts.contains("balance")) {
+                finaltts = "Nikesh, you have 10000 Rupees in your account";
+            }
+
+            if(tts.contains("cleared")) {
+                finaltts = "No your last cheque number 232345 From Canara Bank was not cleared";
+            }
+
+            if(tts.contains("branch")) {
+                finaltts = "Nearest branch of My Bank is Gurgaon DFL Golf Course roads";
+            }
+
+            ((TextView)findViewById(R.id.text1)).setText(finaltts);
+
+            speech(finaltts);
             t1.setLanguage(Locale.UK);
         }
     }
