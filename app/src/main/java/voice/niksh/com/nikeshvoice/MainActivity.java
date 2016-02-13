@@ -30,7 +30,7 @@ public class MainActivity extends Activity implements OnClickListener,TextToSpee
     private SeekBar seekPitch;
     private SeekBar seekSpeed;
 
-
+    // From Github
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
