@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
 
     tools:context="voice.niksh.com.nikeshvoice.MainActivity"
-    tools:showIn="@layout/activity_main">
+    >
 
 
     <TextView
@@ -20,19 +20,34 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="132dp"
+        android:textSize="36dp"
         android:text="..." >
 
     </TextView>
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Banking App"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:textSize="40dp">
+    </TextView>
+
 
     <ImageButton
         android:id="@+id/button1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text1"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:layout_marginTop="37dp"
-        android:src="@android:drawable/ic_btn_speak_now" >
+        android:src="@android:drawable/ic_btn_speak_now"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="102dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
 
     </ImageButton>
 
