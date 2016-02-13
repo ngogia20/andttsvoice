@@ -53,4 +53,15 @@
 
     </ImageButton>
 
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_btn_speak_now"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignStart="@+id/button1"
+        android:onClick="onClick2"/>
+
+
 </RelativeLayout>

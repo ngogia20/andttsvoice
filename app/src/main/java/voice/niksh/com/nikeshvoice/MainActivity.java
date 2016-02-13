@@ -51,6 +51,17 @@ public class MainActivity extends Activity implements OnClickListener,TextToSpee
         }
     }
 
+    public void onClick2(View v) {
+        Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "hi");
+        try {
+            startActivityForResult(i, REQUEST_OK);
+        } catch (Exception e) {
+            Toast.makeText(this, "Error initializing speech to text engine.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
