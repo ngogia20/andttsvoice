@@ -1,11 +1,13 @@
 package voice.niksh.com.nikeshvoice;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 import android.app.Activity;
@@ -74,7 +76,13 @@ public class MainActivity extends Activity implements OnClickListener,TextToSpee
 
             ((TextView)findViewById(R.id.text1)).setText(textview);
 
-            speech(finaltts);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ttsGreater21(finaltts);
+            } else {
+                ttsUnder20(finaltts);
+            }
+
+            //speech(finaltts);
             t1.setLanguage(Locale.UK);
         }
     }
@@ -89,7 +97,26 @@ public class MainActivity extends Activity implements OnClickListener,TextToSpee
     }
 
     private void speech(String stext) {
-        t1.speak(stext, TextToSpeech.QUEUE_FLUSH, null, null);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ttsGreater21(stext);
+        } else {
+            ttsUnder20(stext);
+        }
+        //t1.speak(stext, TextToSpeech.QUEUE_FLUSH, null, null);
+    }
+
+    @SuppressWarnings("deprecation")
+    private void ttsUnder20(String text) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "MessageId");
+        t1.speak(text, TextToSpeech.QUEUE_FLUSH, map);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void ttsGreater21(String text) {
+        String utteranceId=this.hashCode() + "";
+        t1.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
     }
 
 }
